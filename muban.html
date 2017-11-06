@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    用户名：<input type="text" id="txt1">
+    留言：<input type="text" id="txt2">
+    <input type="button" id="btn1" value="点击提交留言">
+    <ul id="ul1">
+        <!-- <li>
+            <p>留言内容</p>
+            <a href="###">用户名<span>×</span></a>
+        </li> -->
+    </ul>
+
+    <script>
+        var txt1 = document.querySelector('#txt1');
+        var txt2 = document.querySelector('#txt2');
+        var btn1 = document.querySelector('#btn1');
+        var ul1 = document.querySelector('#ul1');
+
+        btn1.onclick = function(){
+            var liObj = document.createElement('li');
+            liObj.innerHTML = `
+                <p>${txt1.value}</p>
+                <a href="###">${txt2.value}<span id="span1">×</span></a>
+            `
+            ul1.appendChild(liObj);
+
+            // var span1 = document.querySelector('#span1');
+            // span1.onclick = function(){
+            //     ul1.removeChild(liObj);
+            // }
+        }
+        
+        
+        ul1.onclick = function(e){
+            var o = e.target;
+            //console.log(o);
+            if (o.nodeName === "SPAN"){
+                var oli = o.parentNode.parentNode;
+                ul1.removeChild(oli);
+            }
+        }
+        
+    </script>
+</body>
+</html>
